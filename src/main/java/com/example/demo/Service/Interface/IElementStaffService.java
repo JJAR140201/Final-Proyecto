@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface IElementStaffService extends IBaseService<ElementStaff>{
     List<ElementStaff> findByNameObject();
-    List<ElementStaff> findByDescription();
+    List<List<ElementStaff>> findByDescription();
     List<ElementStaff> findByDateAcquisition();
 }
