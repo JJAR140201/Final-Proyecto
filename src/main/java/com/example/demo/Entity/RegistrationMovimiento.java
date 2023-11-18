@@ -24,4 +24,8 @@ public class RegistrationMovimiento extends Audit{
 
     @Column(name = "dateOutput")
     public LocalDateTime dateOutput;
+
+    @ManyToOne
+    @JoinColumn(name = "employed_id")
+    private Employed employed;
 }

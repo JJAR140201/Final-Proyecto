@@ -28,4 +28,8 @@ public class ElementStaff extends Audit {
 
     @Column(name = "dateAcquisition")
     public LocalDateTime dateAcquisition;
+
+    @ManyToOne
+    @JoinColumn(name = "employed_id")
+    private Employed employed;
 }

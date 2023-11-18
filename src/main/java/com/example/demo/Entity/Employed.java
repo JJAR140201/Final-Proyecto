@@ -3,6 +3,8 @@ package com.example.demo.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -22,4 +24,9 @@ public class Employed extends Audit {
     @Column(name = "position")
     public String position;
 
+    @OneToMany(mappedBy = "employed")
+    private List<RegistrationMovimiento> registrationMovimientos;
+
+    @OneToMany(mappedBy = "employed")
+    private List<ElementStaff> elementStaffList;
 }
