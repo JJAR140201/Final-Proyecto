@@ -1,9 +1,6 @@
 package com.example.demo.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -12,7 +9,9 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class Employed {
+@Entity
+@Table(name = "Employed")
+public class Employed extends Audit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
