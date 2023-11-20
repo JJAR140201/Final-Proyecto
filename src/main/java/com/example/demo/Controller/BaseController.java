@@ -38,7 +38,7 @@ public abstract class BaseController<T extends Audit, S extends IBaseService<T>>
 		}
 	}
 
-	@PutMapping("{id}")
+	@PutMapping("/update-audit/{id}")
 	public ResponseEntity<ApiResponseDto<T>> update(@PathVariable Long id, @RequestBody T entity) {
 		try {
 			service.update(id, entity);
