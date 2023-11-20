@@ -19,7 +19,7 @@ public class EmployedController extends BaseController<Employed, IEmployedServic
 
     @Autowired
     public EmployedController(IEmployedService employedService) {
-        super(employedService, "entityName");
+        super(employedService, "Employed");
         this.employedService = employedService;
     }
 

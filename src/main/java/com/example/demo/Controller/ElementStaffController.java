@@ -20,7 +20,7 @@ public class ElementStaffController extends BaseController<ElementStaff,IElement
 
     @Autowired
     public ElementStaffController(IElementStaffService elementStaffService) {
-        super(elementStaffService, "entityName");
+        super(elementStaffService, "ElementStaff");
         this.elementStaffService = elementStaffService;
     }
 

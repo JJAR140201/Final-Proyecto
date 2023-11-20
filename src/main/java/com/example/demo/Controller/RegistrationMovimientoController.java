@@ -17,15 +17,17 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin("*")
+
 @RestController
 @RequestMapping("/registrationmovimientos")
+@CrossOrigin("*")
 public class RegistrationMovimientoController extends BaseController<RegistrationMovimiento, IRegistrationMovimientoService>{
     @Autowired
     private IRegistrationMovimientoService registrationMovimientoService;
     @Autowired
-    protected RegistrationMovimientoController(IRegistrationMovimientoService service, String entityName) {
-        super(service, entityName);
+    public RegistrationMovimientoController(IRegistrationMovimientoService service, String entityName) {
+        super(service, "RegistrationMovimiento");
+        this.registrationMovimientoService = service;
     }
 
     @GetMapping
