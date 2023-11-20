@@ -29,7 +29,7 @@ public abstract class BaseController<T extends Audit, S extends IBaseService<T>>
 	}
 
 
-	@PostMapping
+	@PostMapping("/save")
 	public ResponseEntity<ApiResponseDto<T>> save(@RequestBody T entity) {
 		try {
 			return ResponseEntity.ok(new ApiResponseDto<T>("Datos guardados", service.save(entity), true));
@@ -48,7 +48,7 @@ public abstract class BaseController<T extends Audit, S extends IBaseService<T>>
 		}
 	}
 
-	@DeleteMapping("{id}")
+	@DeleteMapping("/delete-audit/{id}")
 	public ResponseEntity<ApiResponseDto<T>> delete(@PathVariable Long id) {
 		try {
 			service.delete(id);

@@ -24,7 +24,7 @@ public class ElementStaffController extends BaseController<ElementStaff,IElement
         this.elementStaffService = elementStaffService;
     }
 
-    @GetMapping
+    @GetMapping("/allElementStaff")
     public ResponseEntity<List<ElementStaff>> getAllElementStaff() {
         List<ElementStaff> elementStaffList = elementStaffService.all();
         return new ResponseEntity<>(elementStaffList, HttpStatus.OK);
@@ -56,7 +56,7 @@ public class ElementStaffController extends BaseController<ElementStaff,IElement
         return new ResponseEntity<>(elementStaffList, HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<ElementStaff> createElementStaff(@RequestBody ElementStaff elementStaff) {
         try {
             ElementStaff createdElementStaff = elementStaffService.save(elementStaff);

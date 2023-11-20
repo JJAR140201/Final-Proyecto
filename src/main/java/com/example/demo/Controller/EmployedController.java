@@ -23,7 +23,7 @@ public class EmployedController extends BaseController<Employed, IEmployedServic
         this.employedService = employedService;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/getEmployedById/{id}")
     public ResponseEntity<Employed> getEmployedById(@PathVariable Long id) throws Exception {
         Optional<Employed> employed = Optional.ofNullable(employedService.findById(id));
         return employed.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
@@ -42,7 +42,7 @@ public class EmployedController extends BaseController<Employed, IEmployedServic
         return new ResponseEntity<>(employedList, HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/createEmployed")
     public ResponseEntity<Employed> createEmployed(@RequestBody Employed employed) {
         try {
             Employed createdEmployed = employedService.save(employed);
@@ -52,7 +52,7 @@ public class EmployedController extends BaseController<Employed, IEmployedServic
         }
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/updateEmployed/{id}")
     public ResponseEntity<Employed> updateEmployed(@PathVariable Long id, @RequestBody Employed employed) {
         try {
             employedService.update(id, employed);
@@ -62,7 +62,7 @@ public class EmployedController extends BaseController<Employed, IEmployedServic
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteEmployed/{id}")
     public ResponseEntity<Void> deleteEmployed(@PathVariable Long id) {
         try {
             employedService.delete(id);

@@ -30,13 +30,13 @@ public class RegistrationMovimientoController extends BaseController<Registratio
         this.registrationMovimientoService = service;
     }
 
-    @GetMapping
+    @GetMapping("/getAllRegistrationMovimientos")
     public ResponseEntity<List<RegistrationMovimiento>> getAllRegistrationMovimientos() {
         List<RegistrationMovimiento> registrationMovimientoList = registrationMovimientoService.all();
         return new ResponseEntity<>(registrationMovimientoList, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/getRegistrationMovimientoById/{id}")
     public ResponseEntity<RegistrationMovimiento> getRegistrationMovimientoById(@PathVariable Long id) throws Exception {
         Optional<RegistrationMovimiento> registrationMovimiento = Optional.ofNullable(registrationMovimientoService.findById(id));
         return registrationMovimiento.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
@@ -55,7 +55,7 @@ public class RegistrationMovimientoController extends BaseController<Registratio
         return new ResponseEntity<>(registrationMovimientoList, HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/createRegistrationMovimiento")
     public ResponseEntity<RegistrationMovimiento> createRegistrationMovimiento(@RequestBody RegistrationMovimiento registrationMovimiento) {
         try {
             RegistrationMovimiento createdRegistrationMovimiento = registrationMovimientoService.save(registrationMovimiento);
@@ -65,7 +65,7 @@ public class RegistrationMovimientoController extends BaseController<Registratio
         }
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/updateRegistrationMovimiento/{id}")
     public ResponseEntity<RegistrationMovimiento> updateRegistrationMovimiento(@PathVariable Long id, @RequestBody RegistrationMovimiento registrationMovimiento) {
         try {
             registrationMovimientoService.update(id, registrationMovimiento);
@@ -75,7 +75,7 @@ public class RegistrationMovimientoController extends BaseController<Registratio
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteRegistrationMovimiento/{id}")
     public ResponseEntity<Void> deleteRegistrationMovimiento(@PathVariable Long id) {
         try {
             registrationMovimientoService.delete(id);
