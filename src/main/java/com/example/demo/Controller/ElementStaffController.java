@@ -19,8 +19,9 @@ public class ElementStaffController extends BaseController<ElementStaff,IElement
     private IElementStaffService elementStaffService;
 
     @Autowired
-    protected ElementStaffController(IElementStaffService service, String entityName) {
-        super(service, entityName);
+    public ElementStaffController(IElementStaffService elementStaffService) {
+        super(elementStaffService, "entityName");
+        this.elementStaffService = elementStaffService;
     }
 
     @GetMapping

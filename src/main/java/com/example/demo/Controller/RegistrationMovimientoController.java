@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,14 +39,14 @@ public class RegistrationMovimientoController extends BaseController<Registratio
     }
 
     @GetMapping("/findByDateEntry")
-    public ResponseEntity<List<RegistrationMovimiento>> getRegistrationMovimientosByDateEntry() {
-        List<RegistrationMovimiento> registrationMovimientoList = registrationMovimientoService.findByDateEntry();
+    public ResponseEntity<List<RegistrationMovimiento>> getRegistrationMovimientosByDateEntry(@RequestParam(name = "dateEntry") Date dateEntry) {
+        List<RegistrationMovimiento> registrationMovimientoList = registrationMovimientoService.findByDateEntry(dateEntry);
         return new ResponseEntity<>(registrationMovimientoList, HttpStatus.OK);
     }
 
     @GetMapping("/findByDateOutput")
-    public ResponseEntity<List<RegistrationMovimiento>> getRegistrationMovimientosByDateOutput() {
-        List<RegistrationMovimiento> registrationMovimientoList = registrationMovimientoService.findByDateOutput();
+    public ResponseEntity<List<RegistrationMovimiento>> getRegistrationMovimientosByDateOutput(@RequestParam(name = "dateOutput") Date dateOutput) {
+        List<RegistrationMovimiento> registrationMovimientoList = registrationMovimientoService.findByDateOutput(dateOutput);
         return new ResponseEntity<>(registrationMovimientoList, HttpStatus.OK);
     }
 

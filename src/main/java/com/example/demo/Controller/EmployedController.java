@@ -18,8 +18,9 @@ public class EmployedController extends BaseController<Employed, IEmployedServic
     private IEmployedService employedService;
 
     @Autowired
-    protected EmployedController(IEmployedService service, String entityName) {
-        super(service, entityName);
+    public EmployedController(IEmployedService employedService) {
+        super(employedService, "entityName");
+        this.employedService = employedService;
     }
 
     @GetMapping("/{id}")
