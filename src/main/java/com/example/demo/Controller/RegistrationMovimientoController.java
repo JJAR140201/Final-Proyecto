@@ -6,6 +6,7 @@ import com.example.demo.Service.Interface.IEmployedService;
 import com.example.demo.Service.Interface.IRegistrationMovimientoService;
 import com.example.demo.Service.RegistrationMovimientoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,13 +40,13 @@ public class RegistrationMovimientoController extends BaseController<Registratio
     }
 
     @GetMapping("/findByDateEntry")
-    public ResponseEntity<List<RegistrationMovimiento>> getRegistrationMovimientosByDateEntry(@RequestParam(name = "dateEntry") Date dateEntry) {
+    public ResponseEntity<List<RegistrationMovimiento>> getRegistrationMovimientosByDateEntry(@RequestParam(name = "dateEntry") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dateEntry) {
         List<RegistrationMovimiento> registrationMovimientoList = registrationMovimientoService.findByDateEntry(dateEntry);
         return new ResponseEntity<>(registrationMovimientoList, HttpStatus.OK);
     }
 
     @GetMapping("/findByDateOutput")
-    public ResponseEntity<List<RegistrationMovimiento>> getRegistrationMovimientosByDateOutput(@RequestParam(name = "dateOutput") Date dateOutput) {
+    public ResponseEntity<List<RegistrationMovimiento>> getRegistrationMovimientosByDateOutput(@RequestParam(name = "dateOutput") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dateOutput) {
         List<RegistrationMovimiento> registrationMovimientoList = registrationMovimientoService.findByDateOutput(dateOutput);
         return new ResponseEntity<>(registrationMovimientoList, HttpStatus.OK);
     }
