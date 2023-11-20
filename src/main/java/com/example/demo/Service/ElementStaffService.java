@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -22,17 +23,17 @@ public class ElementStaffService extends BaseService<ElementStaff> implements IE
     }
 
     @Override
-    public List<ElementStaff> findByNameObject() {
-        return Collections.singletonList(repository.findByNameObject());
+    public List<ElementStaff> findByNameObject(String nameObjeto) {
+        return Collections.singletonList(repository.findByNameObject(nameObjeto));
     }
 
     @Override
-    public List<List<ElementStaff>> findByDescription() {
-        return Collections.singletonList(repository.findByDescription());
+    public List<ElementStaff> findByDescription(String description) {
+        return repository.findByDescription(description);
     }
 
     @Override
-    public List<ElementStaff> findByDateAcquisition() {
-        return Collections.singletonList((ElementStaff) repository.findByDateAcquisition());
+    public List<ElementStaff> findByDateAcquisition(Date dateAcquisition) {
+        return repository.findByDateAcquisition(dateAcquisition);
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,19 +37,20 @@ public class ElementStaffController extends BaseController<ElementStaff,IElement
 
     @GetMapping("/findByNameObject")
     public ResponseEntity<List<ElementStaff>> getElementStaffByNameObject() {
-        List<ElementStaff> elementStaffList = elementStaffService.findByNameObject();
+        List<ElementStaff> elementStaffList = elementStaffService.findByNameObject("provideYourNameObjectParameterHere");
         return new ResponseEntity<>(elementStaffList, HttpStatus.OK);
     }
 
     @GetMapping("/findByDescription")
-    public ResponseEntity<List<List<ElementStaff>>> getElementStaffByDescription() {
-        List<List<ElementStaff>> elementStaffList = elementStaffService.findByDescription();
+    public ResponseEntity<List<ElementStaff>> getElementStaffByDescription() {
+        List<ElementStaff> elementStaffList = elementStaffService.findByDescription("provideYourDescriptionParameterHere");
         return new ResponseEntity<>(elementStaffList, HttpStatus.OK);
     }
 
     @GetMapping("/findByDateAcquisition")
     public ResponseEntity<List<ElementStaff>> getElementStaffByDateAcquisition() {
-        List<ElementStaff> elementStaffList = elementStaffService.findByDateAcquisition();
+        // You need to provide a Date parameter here
+        List<ElementStaff> elementStaffList = elementStaffService.findByDateAcquisition(new Date());
         return new ResponseEntity<>(elementStaffList, HttpStatus.OK);
     }
 
