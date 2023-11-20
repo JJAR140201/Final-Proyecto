@@ -7,6 +7,7 @@ import com.example.demo.Service.Interface.IRegistrationMovimientoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -22,12 +23,12 @@ public class RegistrationMovimientoService extends BaseService<RegistrationMovim
     }
 
     @Override
-    public List<RegistrationMovimiento> findByDateEntry(Date dateEntry) {
+    public List<RegistrationMovimiento> findByDateEntry(LocalDateTime dateEntry) {
         return repository.findByDateEntry(dateEntry);
     }
 
     @Override
-    public List<RegistrationMovimiento> findByDateOutput(Date dateOutput) {
+    public List<RegistrationMovimiento> findByDateOutput(LocalDateTime dateOutput) {
         return repository.findByDateOutput(dateOutput);
     }
 }

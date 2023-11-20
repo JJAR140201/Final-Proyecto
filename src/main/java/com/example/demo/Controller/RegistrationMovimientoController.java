@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -40,13 +41,13 @@ public class RegistrationMovimientoController extends BaseController<Registratio
     }
 
     @GetMapping("/findByDateEntry")
-    public ResponseEntity<List<RegistrationMovimiento>> getRegistrationMovimientosByDateEntry(@RequestParam(name = "dateEntry") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dateEntry) {
+    public ResponseEntity<List<RegistrationMovimiento>> getRegistrationMovimientosByDateEntry(@RequestParam(name = "dateEntry") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime dateEntry) {
         List<RegistrationMovimiento> registrationMovimientoList = registrationMovimientoService.findByDateEntry(dateEntry);
         return new ResponseEntity<>(registrationMovimientoList, HttpStatus.OK);
     }
 
     @GetMapping("/findByDateOutput")
-    public ResponseEntity<List<RegistrationMovimiento>> getRegistrationMovimientosByDateOutput(@RequestParam(name = "dateOutput") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dateOutput) {
+    public ResponseEntity<List<RegistrationMovimiento>> getRegistrationMovimientosByDateOutput(@RequestParam(name = "dateOutput") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDateTime dateOutput) {
         List<RegistrationMovimiento> registrationMovimientoList = registrationMovimientoService.findByDateOutput(dateOutput);
         return new ResponseEntity<>(registrationMovimientoList, HttpStatus.OK);
     }
