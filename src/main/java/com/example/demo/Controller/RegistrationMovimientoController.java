@@ -25,7 +25,7 @@ public class RegistrationMovimientoController extends BaseController<Registratio
     @Autowired
     private IRegistrationMovimientoService registrationMovimientoService;
     @Autowired
-    public RegistrationMovimientoController(IRegistrationMovimientoService service, String entityName) {
+    public RegistrationMovimientoController(IRegistrationMovimientoService service) {
         super(service, "RegistrationMovimiento");
         this.registrationMovimientoService = service;
     }
