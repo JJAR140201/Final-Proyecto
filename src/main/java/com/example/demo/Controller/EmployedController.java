@@ -1,8 +1,6 @@
 package com.example.demo.Controller;
 
-import com.example.demo.Entity.ElementStaff;
 import com.example.demo.Entity.Employed;
-import com.example.demo.Service.Interface.IElementStaffService;
 import com.example.demo.Service.Interface.IEmployedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +17,7 @@ public class EmployedController extends BaseController<Employed, IEmployedServic
     @Autowired
     private IEmployedService employedService;
 
+    @Autowired
     protected EmployedController(IEmployedService service, String entityName) {
         super(service, entityName);
     }

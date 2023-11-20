@@ -18,6 +18,7 @@ public class ElementStaffController extends BaseController<ElementStaff,IElement
     @Autowired
     private IElementStaffService elementStaffService;
 
+    @Autowired
     protected ElementStaffController(IElementStaffService service, String entityName) {
         super(service, entityName);
     }

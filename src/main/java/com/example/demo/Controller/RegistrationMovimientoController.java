@@ -19,6 +19,7 @@ import java.util.Optional;
 public class RegistrationMovimientoController extends BaseController<RegistrationMovimiento, IRegistrationMovimientoService>{
     @Autowired
     private IRegistrationMovimientoService registrationMovimientoService;
+    @Autowired
     protected RegistrationMovimientoController(IRegistrationMovimientoService service, String entityName) {
         super(service, entityName);
     }
