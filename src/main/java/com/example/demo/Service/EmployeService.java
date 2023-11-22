@@ -1,5 +1,6 @@
 package com.example.demo.Service;
 
+import com.example.demo.DTO.IEmployeeDetails;
 import com.example.demo.Entity.Employed;
 import com.example.demo.Repository.IBaseRepository;
 import com.example.demo.Repository.IEmployedRepository;
@@ -31,5 +32,5 @@ public class EmployeService extends BaseService<Employed> implements IEmployedSe
     }
 
     @Override
-    public List<Employed> findEmployeeDetailsById(Long employedId){return (List<Employed>) repository.findEmployeeDetailsById(employedId);}
+    public List<IEmployeeDetails> findEmployeeDetailsById(Long employedId){return (List<IEmployeeDetails>) repository.findEmployeeDetailsById(employedId);}
 }
