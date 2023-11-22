@@ -4,6 +4,8 @@ import com.example.demo.DTO.IEmployeeDetails;
 import com.example.demo.Entity.ElementStaff;
 import com.example.demo.Entity.Employed;
 import com.example.demo.Service.Interface.IEmployedService;
+import org.springframework.aop.framework.Advised;
+import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,9 +53,27 @@ public class EmployedController extends BaseController<Employed, IEmployedServic
 
     @GetMapping("/findEmployeeDetailsById/{employedId}")
     public ResponseEntity<IEmployeeDetails> findEmployeeDetailsById(@PathVariable Long employedId) {
-        IEmployeeDetails employeeDetails = (IEmployeeDetails) employedService.findEmployeeDetailsById(employedId);
-        return new ResponseEntity<>(employeeDetails, HttpStatus.OK);
+        Object result = employedService.findEmployeeDetailsById(employedId);
+
+        if (AopUtils.isAopProxy(result) && result instanceof Advised) {
+            try {
+                Advised advised = (Advised) result;
+                result = advised.getTargetSource().getTarget();
+            } catch (Exception e) {
+                // Manejar la excepción, si es necesario
+                e.printStackTrace();
+            }
+        }
+
+        if (result instanceof IEmployeeDetails) {
+            IEmployeeDetails employeeDetails = (IEmployeeDetails) result;
+            return new ResponseEntity<>(employeeDetails, HttpStatus.OK);
+        } else {
+            // Manejar el caso en el que el resultado no es una instancia de IEmployeeDetails
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
+
 
 
     @PostMapping("/createEmployed")
