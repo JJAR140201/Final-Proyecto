@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Entity.ElementStaff;
 import com.example.demo.Entity.Employed;
 import com.example.demo.Service.Interface.IEmployedService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,11 @@ public class EmployedController extends BaseController<Employed, IEmployedServic
         Optional<Employed> employed = Optional.ofNullable(employedService.findById(id));
         return employed.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+    @GetMapping("/allEmployed")
+    public ResponseEntity<List<Employed>> getAllElementStaff() {
+        List<Employed> employedList = employedService.all();
+        return new ResponseEntity<>(employedList, HttpStatus.OK);
     }
 
     @GetMapping("/findByFullName")
