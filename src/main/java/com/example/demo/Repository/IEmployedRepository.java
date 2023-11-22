@@ -16,8 +16,8 @@ public interface IEmployedRepository extends IBaseRepository<Employed, Long>{
 
     @Query("SELECT e.fullName AS fullName, es.nameObject AS nameObject, rm.dateEntry AS dateEntry, rm.dateOutput AS dateOutput " +
             "FROM Employed e " +
-            "LEFT JOIN e.registrationMovimientos rm " +
-            "LEFT JOIN e.elementStaffList es " +
+            "INNER JOIN e.registrationMovimientos rm " +
+            "INNER JOIN e.elementStaffList es " +
             "WHERE e.id = :employedId")
     IEmployeeDetails findEmployeeDetailsById(@Param("employedId") Long employed_id);
 }
