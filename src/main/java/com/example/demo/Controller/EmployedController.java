@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.example.demo.DTO.IEmployeeDetails;
 import com.example.demo.Entity.ElementStaff;
 import com.example.demo.Entity.Employed;
 import com.example.demo.Service.Interface.IEmployedService;
@@ -49,10 +50,11 @@ public class EmployedController extends BaseController<Employed, IEmployedServic
     }
 
     @GetMapping("/findEmployeeDetailsById")
-    public ResponseEntity<List<Employed>> findEmployeeDetailsById(Long employedId){
-        List<Employed> employedList = employedService.findEmployeeDetailsById(employedId);
-        return new ResponseEntity<>(employedList, HttpStatus.OK);
+    public ResponseEntity<IEmployeeDetails> findEmployeeDetailsById(Long employedId) {
+        IEmployeeDetails employeeDetails = (IEmployeeDetails) employedService.findEmployeeDetailsById(employedId);
+        return new ResponseEntity<>(employeeDetails, HttpStatus.OK);
     }
+
 
     @PostMapping("/createEmployed")
     public ResponseEntity<Employed> createEmployed(@RequestBody Employed employed) {
