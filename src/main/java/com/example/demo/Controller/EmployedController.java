@@ -49,9 +49,9 @@ public class EmployedController extends BaseController<Employed, IEmployedServic
         return new ResponseEntity<>(employedList, HttpStatus.OK);
     }
 
-    @GetMapping("/findEmployeeDetailsById/{employedI}")
-    public ResponseEntity<IEmployeeDetails> findEmployeeDetailsById(Long employedId) {
-        IEmployeeDetails employeeDetails = (IEmployeeDetails) employedService.findEmployeeDetailsById(employedId);
+    @GetMapping("/findEmployeeDetailsById/{id}")
+    public ResponseEntity<IEmployeeDetails> findEmployeeDetailsById(Long id) {
+        IEmployeeDetails employeeDetails = (IEmployeeDetails) employedService.findEmployeeDetailsById(id);
         return new ResponseEntity<>(employeeDetails, HttpStatus.OK);
     }
 

@@ -6,6 +6,6 @@ import java.util.List;
 public interface IEmployeeDetails {
     String getFullName();
     String getNameObject();
-    List<LocalDateTime> getDateEntry();
-    List<LocalDateTime> getDateOutput();
+    LocalDateTime getDateEntry();
+    LocalDateTime getDateOutput();
 }
