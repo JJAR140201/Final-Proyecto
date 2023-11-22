@@ -29,4 +29,7 @@ public class EmployeService extends BaseService<Employed> implements IEmployedSe
     public List<Employed> findByPosition() {
         return (List<Employed>) repository.findByPosition();
     }
+
+    @Override
+    public List<Employed> findEmployeeDetailsById(Long employedId){return (List<Employed>) repository.findEmployeeDetailsById(employedId);}
 }

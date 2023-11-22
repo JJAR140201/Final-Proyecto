@@ -48,6 +48,12 @@ public class EmployedController extends BaseController<Employed, IEmployedServic
         return new ResponseEntity<>(employedList, HttpStatus.OK);
     }
 
+    @GetMapping("/findEmployeeDetailsById")
+    public ResponseEntity<List<Employed>> findEmployeeDetailsById(Long employedId){
+        List<Employed> employedList = employedService.findEmployeeDetailsById(employedId);
+        return new ResponseEntity<>(employedList, HttpStatus.OK);
+    }
+
     @PostMapping("/createEmployed")
     public ResponseEntity<Employed> createEmployed(@RequestBody Employed employed) {
         try {

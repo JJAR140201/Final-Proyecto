@@ -20,7 +20,7 @@ public class Employed extends Audit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    @Column(name = "name")
+    @Column(name = "fullName")
     public String fullName;
     @Column(name = "position")
     public String position;
