@@ -30,7 +30,7 @@ public class ElementStaffController extends BaseController<ElementStaff,IElement
         return new ResponseEntity<>(elementStaffList, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/getElementStaffById/{id}")
     public ResponseEntity<ElementStaff> getElementStaffById(@PathVariable Long id) throws Exception {
         Optional<ElementStaff> elementStaff = Optional.ofNullable(elementStaffService.findById(id));
         return elementStaff.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
@@ -56,7 +56,7 @@ public class ElementStaffController extends BaseController<ElementStaff,IElement
         return new ResponseEntity<>(elementStaffList, HttpStatus.OK);
     }
 
-    @PostMapping("/create")
+    @PostMapping("/createElementStaff")
     public ResponseEntity<ElementStaff> createElementStaff(@RequestBody ElementStaff elementStaff) {
         try {
             ElementStaff createdElementStaff = elementStaffService.save(elementStaff);
@@ -66,7 +66,7 @@ public class ElementStaffController extends BaseController<ElementStaff,IElement
         }
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/updateElementStaff/{id}")
     public ResponseEntity<ElementStaff> updateElementStaff(@PathVariable Long id, @RequestBody ElementStaff elementStaff) {
         try {
             elementStaffService.update(id, elementStaff);
@@ -76,7 +76,7 @@ public class ElementStaffController extends BaseController<ElementStaff,IElement
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteElementStaff/{id}")
     public ResponseEntity<Void> deleteElementStaff(@PathVariable Long id) {
         try {
             elementStaffService.delete(id);
