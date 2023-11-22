@@ -14,15 +14,9 @@ import java.util.Optional;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/elementstaff")
-public class ElementStaffController extends BaseController<ElementStaff,IElementStaffService> {
+public class ElementStaffController {
     @Autowired
     private IElementStaffService elementStaffService;
-
-    @Autowired
-    public ElementStaffController(IElementStaffService elementStaffService) {
-        super(elementStaffService, "ElementStaff");
-        this.elementStaffService = elementStaffService;
-    }
 
     @GetMapping("/allElementStaff")
     public ResponseEntity<List<ElementStaff>> getAllElementStaff() {

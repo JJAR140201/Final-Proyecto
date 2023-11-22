@@ -21,14 +21,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/registrationmovimientos")
 @CrossOrigin("*")
-public class RegistrationMovimientoController extends BaseController<RegistrationMovimiento, IRegistrationMovimientoService>{
+public class RegistrationMovimientoController {
     @Autowired
     private IRegistrationMovimientoService registrationMovimientoService;
-    @Autowired
-    public RegistrationMovimientoController(IRegistrationMovimientoService service) {
-        super(service, "RegistrationMovimiento");
-        this.registrationMovimientoService = service;
-    }
 
     @GetMapping("/getAllRegistrationMovimientos")
     public ResponseEntity<List<RegistrationMovimiento>> getAllRegistrationMovimientos() {
