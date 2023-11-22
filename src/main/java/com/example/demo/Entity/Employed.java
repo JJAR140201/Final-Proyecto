@@ -1,5 +1,6 @@
 package com.example.demo.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,9 +25,11 @@ public class Employed extends Audit {
     @Column(name = "position")
     public String position;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "employed")
     private List<RegistrationMovimiento> registrationMovimientos;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "employed")
     private List<ElementStaff> elementStaffList;
 }

@@ -1,5 +1,6 @@
 package com.example.demo.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,6 +26,7 @@ public class RegistrationMovimiento extends Audit{
     @Column(name = "dateOutput")
     public LocalDateTime dateOutput;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "employed_id")
     private Employed employed;

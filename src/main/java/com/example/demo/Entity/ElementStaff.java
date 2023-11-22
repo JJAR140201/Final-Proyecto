@@ -1,5 +1,6 @@
 package com.example.demo.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.extern.apachecommons.CommonsLog;
@@ -29,6 +30,7 @@ public class ElementStaff extends Audit {
     @Column(name = "dateAcquisition")
     public LocalDateTime dateAcquisition;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "employed_id")
     private Employed employed;
