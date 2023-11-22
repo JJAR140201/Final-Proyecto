@@ -52,26 +52,9 @@ public class EmployedController extends BaseController<Employed, IEmployedServic
     }
 
     @GetMapping("/findEmployeeDetailsById/{employedId}")
-    public ResponseEntity<IEmployeeDetails> findEmployeeDetailsById(@PathVariable Long employedId) {
-        Object result = employedService.findEmployeeDetailsById(employedId);
-
-        if (AopUtils.isAopProxy(result) && result instanceof Advised) {
-            try {
-                Advised advised = (Advised) result;
-                result = advised.getTargetSource().getTarget();
-            } catch (Exception e) {
-                // Manejar la excepción, si es necesario
-                e.printStackTrace();
-            }
-        }
-
-        if (result instanceof IEmployeeDetails) {
-            IEmployeeDetails employeeDetails = (IEmployeeDetails) result;
-            return new ResponseEntity<>(employeeDetails, HttpStatus.OK);
-        } else {
-            // Manejar el caso en el que el resultado no es una instancia de IEmployeeDetails
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<List<IEmployeeDetails>> findEmployeeDetailsById(@PathVariable Long employedId) {
+        List<IEmployeeDetails> employeeDetails = (List<IEmployeeDetails>) employedService.findEmployeeDetailsById(employedId);
+        return new ResponseEntity<>(employeeDetails, HttpStatus.OK);
     }
 
 

@@ -8,5 +8,5 @@ import java.util.List;
 public interface IEmployedService extends IBaseService<Employed> {
     List<Employed> findByFullName();
     List<Employed> findByPosition();
-    IEmployeeDetails findEmployeeDetailsById(Long employedId);
+    List<IEmployeeDetails> findEmployeeDetailsById(Long employedId);
 }
