@@ -32,5 +32,5 @@ public class EmployeService extends BaseService<Employed> implements IEmployedSe
     }
 
     @Override
-    public List<IEmployeeDetails> findEmployeeDetailsById(Long employedId){return (List<IEmployeeDetails>) repository.findEmployeeDetailsById(employedId);}
+    public IEmployeeDetails findEmployeeDetailsById(Long employedId){return repository.findEmployeeDetailsById(employedId);}
 }
